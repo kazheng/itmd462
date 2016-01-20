@@ -13,6 +13,6 @@ class NoteController
      */
     public function showAction()
     {
-        return new Response('HELLO!');
+        return new Response("HELLO!");
     }
 }
