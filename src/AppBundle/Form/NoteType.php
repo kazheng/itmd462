@@ -5,6 +5,8 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class NoteType extends AbstractType
 {
@@ -15,7 +17,7 @@ class NoteType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('noteSubject','textType:class',
+            ->add('noteSubject',textType::class,
                     array(
                     'label' => 'Note Subject',
                     'required' => true,
@@ -26,7 +28,7 @@ class NoteType extends AbstractType
                     )
                 )
 
-            ->add('noteBody','textAreaType:class',
+            ->add('noteBody',textAreaType::class,
                 array(
                     'label' => 'Note Body',
                     'required' => true,
@@ -36,7 +38,7 @@ class NoteType extends AbstractType
                         )
                 )
             )
-            ->add('noteAuthor','textType:class',
+            ->add('noteAuthor',textType::class,
                 array(
                     'label' => 'Note Author',
                     'required' => true,
