@@ -48,9 +48,6 @@ class NoteType extends AbstractType
                         )
                 )
             )
-
-            ->add('noteBodyCharCount')
-            ->add('noteDateTime', 'datetime')
         ;
     }
     

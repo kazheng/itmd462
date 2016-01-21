@@ -46,14 +46,14 @@ class Note
     /**
      * @var int
      *
-     * @ORM\Column(name="noteBodyCharCount", type="integer")
+     * @ORM\Column(name="noteBodyCharCount", type="integer", nullable=true)
      */
     private $noteBodyCharCount;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="noteDateTime", type="datetime")
+     * @ORM\Column(name="noteDateTime", type="datetime", nullable=true)
      */
     private $noteDateTime;
 
@@ -102,8 +102,9 @@ class Note
     public function setNoteBody($noteBody)
     {
         $this->noteBody = $noteBody;
+        $this->setNoteBodyCharCount($this->$noteBody);
 
-        return $this;
+        return $this->noteBody;
     }
 
     /**
@@ -149,7 +150,7 @@ class Note
      */
     public function setNoteBodyCharCount($noteBodyCharCount)
     {
-        $this->noteBodyCharCount = strlen($noteBodyCharCount);
+        $this->noteBodyCharCount = strlen($this->$noteBodyCharCount);
 
         return $this;
     }
