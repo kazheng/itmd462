@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/project_delphi.iml" filepath="$PROJECT_DIR$/.idea/project_delphi.iml" />
+      <module fileurl="file://C:/projects/itmd462/.idea/itmd462.iml" filepath="C:/projects/itmd462/.idea/itmd462.iml" />
     </modules>
   </component>
 </project>
