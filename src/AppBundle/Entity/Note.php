@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="note")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\NoteRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Note
 {
@@ -24,23 +25,37 @@ class Note
     /**
      * @var string
      *
-     * @ORM\Column(name="note", type="string", length=255)
+     * @ORM\Column(name="noteSubject", type="string", length=255)
      */
-    private $note;
+    private $noteSubject;
 
     /**
-     * @var bool
+     * @var string
      *
-     * @ORM\Column(name="complete", type="boolean")
+     * @ORM\Column(name="noteBody", type="string", length=255)
      */
-    private $complete;
+    private $noteBody;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="noteAuthor", type="string", length=255)
+     */
+    private $noteAuthor;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="noteBodyCharCount", type="integer")
+     */
+    private $noteBodyCharCount;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="created", type="datetime")
+     * @ORM\Column(name="noteDateTime", type="datetime")
      */
-    private $created;
+    private $noteDateTime;
 
 
     /**
@@ -54,75 +69,125 @@ class Note
     }
 
     /**
-     * Set note
+     * Set noteSubject
      *
-     * @param string $note
+     * @param string $noteSubject
      *
      * @return Note
      */
-    public function setNote($note)
+    public function setNoteSubject($noteSubject)
     {
-        $this->note = $note;
+        $this->noteSubject = $noteSubject;
 
         return $this;
     }
 
     /**
-     * Get note
+     * Get noteSubject
      *
      * @return string
      */
-    public function getNote()
+    public function getNoteSubject()
     {
-        return $this->note;
+        return $this->noteSubject;
     }
 
     /**
-     * Set complete
+     * Set noteBody
      *
-     * @param boolean $complete
+     * @param string $noteBody
      *
      * @return Note
      */
-    public function setComplete($complete)
+    public function setNoteBody($noteBody)
     {
-        $this->complete = $complete;
+        $this->noteBody = $noteBody;
 
         return $this;
     }
 
     /**
-     * Get complete
+     * Get noteBody
      *
-     * @return bool
+     * @return string
      */
-    public function getComplete()
+    public function getNoteBody()
     {
-        return $this->complete;
+        return $this->noteBody;
     }
 
     /**
-     * Set created
+     * Set noteAuthor
      *
-     * @param \DateTime $created
+     * @param string $noteAuthor
      *
      * @return Note
      */
-    public function setCreated($created)
+    public function setNoteAuthor($noteAuthor)
     {
-        $this->created = $created;
+        $this->noteAuthor = $noteAuthor;
 
         return $this;
     }
 
     /**
-     * Get created
+     * Get noteAuthor
+     *
+     * @return string
+     */
+    public function getNoteAuthor()
+    {
+        return $this->noteAuthor;
+    }
+
+    /**
+     * Set noteBodyCharCount
+     *
+     * @param integer $noteBodyCharCount
+     *
+     * @return Note
+     */
+    public function setNoteBodyCharCount($noteBodyCharCount)
+    {
+        $this->noteBodyCharCount = strlen($noteBodyCharCount);
+
+        return $this;
+    }
+
+    /**
+     * Get noteBodyCharCount
+     *
+     * @return int
+     */
+    public function getNoteBodyCharCount()
+    {
+        return $this->noteBodyCharCount;
+    }
+
+    /**
+     * Set noteDateTime
+     *
+     * @ORM\PrePersist
+     * @param \DateTime $noteDateTime
+     *
+     * @return Note
+     */
+    public function setNoteDateTime()
+    {
+        if(!isset($this->noteDateTime))
+        $this->noteDateTime = new \DateTime();
+
+        return $this;
+    }
+
+    /**
+     * Get noteDateTime
      *
      * @return \DateTime
      */
-    public function getCreated()
+    public function getNoteDateTime()
     {
-        return $this->created;
+        return $this->noteDateTime;
     }
 }
 

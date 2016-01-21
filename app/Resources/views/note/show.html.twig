@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Note</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ note.id }}</td>
+            </tr>
+            <tr>
+                <th>Notesubject</th>
+                <td>{{ note.noteSubject }}</td>
+            </tr>
+            <tr>
+                <th>Notebody</th>
+                <td>{{ note.noteBody }}</td>
+            </tr>
+            <tr>
+                <th>Noteauthor</th>
+                <td>{{ note.noteAuthor }}</td>
+            </tr>
+            <tr>
+                <th>Notebodycharcount</th>
+                <td>{{ note.noteBodyCharCount }}</td>
+            </tr>
+            <tr>
+                <th>Notedatetime</th>
+                <td>{% if note.noteDateTime %}{{ note.noteDateTime|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('note_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('note_edit', { 'id': note.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
