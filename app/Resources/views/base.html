@@ -1,3 +1,26 @@
+<!--
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+
+    <body>
+        {% block body %}{% endblock %}
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>
+
+-->
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,10 +35,10 @@
     <title>Clean Blog</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href='{{ asset('css/bootstrap.min.css') }}' rel='stylesheet'>
+    <link href="{{ asset (css/bootstrap.min.css) }}" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href='{{ asset('css/clean-blog.min.css')}}' rel='stylesheet'>
+    <link href="{{ asset(css/clean-blog.min.css)}}" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -44,7 +67,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{{ path('note_index') }}">Notes</a>
+            <a class="navbar-brand" href="index.html">Start Bootstrap</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -71,14 +94,14 @@
 
 <!-- Page Header -->
 <!-- Set your background image for this header on the line below. -->
-<header class="intro-header" style="background-image: url('{{ asset ('img/home-bg.jpg')}}')">
+<header class="intro-header" style="background-image: url('{{ asset (img/home-bg.jpg)}}')">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <div class="site-heading">
-                    <h1>Notebook</h1>
+                    <h1>Clean Blog</h1>
                     <hr class="small">
-                    <span class="subheading">A simple yet elegant online notebook</span>
+                    <span class="subheading">A Clean Blog Theme by Start Bootstrap</span>
                 </div>
             </div>
         </div>
@@ -90,6 +113,27 @@
     <div class="row">
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
             {% block body %}{% endblock %}
+            <div class="post-preview">
+                <a href="post.html">
+                    <h2 class="post-title">
+                        Man must explore, and this is exploration at its greatest
+
+                        <!--Note Subject-->
+
+                    </h2>
+                    <h3 class="post-subtitle">
+                        Problems look mighty small from 150 miles up
+                        <!--Note Body-->
+
+                    </h3>
+                </a>
+                <p class="post-meta">Posted by
+
+                    <a href="#">Start Bootstrap</a> <!--Note Author, Char Count "Note Author posted 'char count' number of letters"-->
+
+                    on September 24, 2014</p> <!--Note Date Time-->
+            </div>
+            <hr>
         </div>
     </div>
 </div>
@@ -127,7 +171,7 @@
                         </a>
                     </li>
                 </ul>
-                <p class="copyright text-muted">Copyright &copy; Kevin Zheng 2016</p>
+                <p class="copyright text-muted">Copyright &copy; Your Website 2014</p>
             </div>
         </div>
     </div>

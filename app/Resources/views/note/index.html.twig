@@ -1,47 +1,37 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Note list</h1>
+    <h1>Notebook</h1>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Notesubject</th>
-                <th>Notebody</th>
-                <th>Noteauthor</th>
-                <th>Notebodycharcount</th>
-                <th>Notedatetime</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for note in notes %}
-            <tr>
-                <td><a href="{{ path('note_show', { 'id': note.id }) }}">{{ note.id }}</a></td>
-                <td>{{ note.noteSubject }}</td>
-                <td>{{ note.noteBody }}</td>
-                <td>{{ note.noteAuthor }}</td>
-                <td>{{ note.noteBodyCharCount }}</td>
-                <td>{% if note.noteDateTime %}{{ note.noteDateTime|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('note_show', { 'id': note.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('note_edit', { 'id': note.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    {% for note in notes %}
+                    <div class="post-preview">
+                        <a href="{{ path('note_show', { 'id': note.id }) }}">
+                            <h2 class="post-title">
+                                {{ note.noteSubject }}
+                            </h2>
 
-    <ul>
-        <li>
-            <a href="{{ path('note_new') }}">Create a new entry</a>
-        </li>
-    </ul>
+                            <h3 class="post-subtitle">
+                                {{ note.noteBody }}
+                            </h3>
+                        </a>
+                        <p class="post-meta">
+                            <strong><span style="color:black">{{ note.noteAuthor }}</span></strong>
+                            wrote note number {{ note.id }} with {{ note.noteBodyCharCount }} letters on
+
+                            <span style="color:black">
+                                {% if note.noteDateTime %}
+                                {{ note.noteDateTime|date('l, F jS Y H:i:s') }}
+                                {% endif %}
+                            </span>
+
+                            <a href="{{ path('note_edit', { 'id': note.id }) }}">Edit</a></p>
+
+
+                    </div>
+                    <hr>
+
+    {% endfor %}
+
+            <a href="{{ path('note_new') }}" class="btn btn-default">Write a new page</a>
+
 {% endblock %}

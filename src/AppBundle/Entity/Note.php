@@ -101,10 +101,10 @@ class Note
      */
     public function setNoteBody($noteBody)
     {
+        $this->setNoteBodyCharCount($noteBody);
         $this->noteBody = $noteBody;
-        $this->setNoteBodyCharCount($this->$noteBody);
 
-        return $this->noteBody;
+        return $this;
     }
 
     /**
@@ -150,7 +150,7 @@ class Note
      */
     public function setNoteBodyCharCount($noteBodyCharCount)
     {
-        $this->noteBodyCharCount = strlen($this->$noteBodyCharCount);
+        $this->noteBodyCharCount = strlen($noteBodyCharCount);
 
         return $this;
     }
